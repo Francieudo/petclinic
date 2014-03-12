@@ -248,6 +248,14 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- For PostgreSql only -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+		
 		<!-- Webjars (static dependencies distributed as JAR files) -->
 		<dependency>
 			<groupId>org.webjars</groupId>
