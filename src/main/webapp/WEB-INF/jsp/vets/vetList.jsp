@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %>
 
-<html lang="en">
+<html lang="pt">
 
 
 <jsp:include page="../fragments/headTag.jsp"/>
@@ -14,13 +14,16 @@
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
 
-    <h2>Veterinarians</h2>
+    <h2><fmt:message key="Veterinarians"/></h2>
 
+	<fmt:message key="Name" var="name_th"/>
+	<fmt:message key="Specialties" var="specialties_th"/>
+	
     <datatables:table id="vets" data="${vets.vetList}" cdn="true" row="vet" theme="bootstrap2" cssClass="table table-striped" paginate="false" info="false">
-        <datatables:column title="Name">
+        <datatables:column title="${name_th}">
             <c:out value="${vet.firstName} ${vet.lastName}"></c:out>
         </datatables:column>
-        <datatables:column title="Specialties">
+        <datatables:column title="${specialties_th}">
             <c:forEach var="specialty" items="${vet.specialties}">
                 <c:out value="${specialty.name}"/>
             </c:forEach>
@@ -31,10 +34,10 @@
     <table class="table-buttons">
         <tr>
             <td>
-                <a href="<spring:url value="/vets.xml" htmlEscape="true" />">View as XML</a>
+                <a href="<spring:url value="/vets.xml" htmlEscape="true" />"><fmt:message key="View_as_XML"/></a>
             </td>
             <td>
-                <a href="<spring:url value="/vets.atom" htmlEscape="true" />">Subscribe to Atom feed</a>
+                <a href="<spring:url value="/vets.atom" htmlEscape="true" />"><fmt:message key="Subscribe_to_Atom_feed"/></a>
             </td>
         </tr>
     </table>

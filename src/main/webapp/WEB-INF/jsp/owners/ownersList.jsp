@@ -13,23 +13,30 @@
 <body>
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
-    <h2>Owners</h2>
+    <h2><fmt:message key="Owners"/></h2>
+    
+    <fmt:message key="Name" var="name_th"/>
+    <fmt:message key="Address" var="address_th"/>
+    <fmt:message key="City" var="city_th"/>
+    <fmt:message key="Telephone" var="telephone_th"/>
+    <fmt:message key="Pets" var="pets_th"/>
     
     <datatables:table id="owners" data="${selections}" cdn="true" row="owner" theme="bootstrap2" 
                       cssClass="table table-striped" paginate="false" info="false" export="pdf">
-        <datatables:column title="Name" cssStyle="width: 150px;" display="html">
+        <datatables:column title="${name_th}" cssStyle="width: 150px;" display="html">
             <spring:url value="/owners/{ownerId}.html" var="ownerUrl">
                 <spring:param name="ownerId" value="${owner.id}"/>
             </spring:url>
             <a href="${fn:escapeXml(ownerUrl)}"><c:out value="${owner.firstName} ${owner.lastName}"/></a>
         </datatables:column>
-        <datatables:column title="Name" display="pdf">
+        <datatables:column title="${name_th}" display="pdf">
             <c:out value="${owner.firstName} ${owner.lastName}"/>
+            
         </datatables:column>
-        <datatables:column title="Address" property="address" cssStyle="width: 200px;"/>
-        <datatables:column title="City" property="city"/>
-        <datatables:column title="Telephone" property="telephone"/>
-        <datatables:column title="Pets" cssStyle="width: 100px;">
+        <datatables:column title="${address_th}" property="address" cssStyle="width: 200px;"/>
+        <datatables:column title="${city_th}" property="city"/>
+        <datatables:column title="${telephone_th}" property="telephone"/>
+        <datatables:column title="${pets_th}" cssStyle="width: 100px;">
             <c:forEach var="pet" items="${owner.pets}">
                 <c:out value="${pet.name}"/>
             </c:forEach>

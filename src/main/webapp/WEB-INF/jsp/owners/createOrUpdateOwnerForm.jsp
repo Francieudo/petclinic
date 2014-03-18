@@ -21,22 +21,29 @@
     </c:choose>
 
     <h2>
-        <c:if test="${owner['new']}">New </c:if> Owner
+        <c:if test="${owner['new']}"><fmt:message key="New"/> </c:if> <fmt:message key="Owner"/>
     </h2>
+    
+    <fmt:message key="First_name" var="First_name"/>
+    <fmt:message key="Last_name" var="Last_name"/>
+    <fmt:message key="Address" var="Address"/>
+    <fmt:message key="City" var="City"/>
+    <fmt:message key="Telephone" var="Telephone"/>
+    
     <form:form modelAttribute="owner" method="${method}" class="form-horizontal" id="add-owner-form">
-        <petclinic:inputField label="First Name" name="firstName"/>
-        <petclinic:inputField label="Last Name" name="lastName"/>
-        <petclinic:inputField label="Address" name="address"/>
-        <petclinic:inputField label="City" name="city"/>
-        <petclinic:inputField label="Telephone" name="telephone"/>
+        <petclinic:inputField label="${First_name}" name="firstName"/>
+        <petclinic:inputField label="${Last_name}" name="lastName"/>
+        <petclinic:inputField label="${Address}" name="address"/>
+        <petclinic:inputField label="${City}" name="city"/>
+        <petclinic:inputField label="${Telephone}" name="telephone"/>
 
         <div class="form-actions">
             <c:choose>
                 <c:when test="${owner['new']}">
-                    <button type="submit">Add Owner</button>
+                    <button type="submit"><fmt:message key="Add_Owners"/></button>
                 </c:when>
                 <c:otherwise>
-                    <button type="submit">Update Owner</button>
+                    <button type="submit"><fmt:message key="Update_Owner"/></button>
                 </c:otherwise>
             </c:choose>
         </div>
